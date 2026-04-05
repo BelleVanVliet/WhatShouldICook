@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Grid Button</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+}
+
+/* Grid container */
+#grid{
+    display:grid;
+    grid-template-columns: repeat(40, 1fr);
+
+    width: min(100vw, 200vh);
+    aspect-ratio: 2 / 1;
+
+    background-image:url("earth.webp");
+    background-size:cover;
+    background-position:center;
+}
+
+/* normal squares (no borders now) */
+.square{
+    aspect-ratio:1;
+}
+
+/* image button */
+.imageButton{
+    aspect-ratio:1;
+    border-radius:50%;
+    border:4px solid red;
+
+    background-image:url("food.jpg");
+    background-size:cover;
+    background-position:center;
+
+    cursor:pointer;
+}
+
+/* border changes on hover */
+.imageButton:hover{
+    border-color:lime;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="grid"></div>
+
+<script>
+
+const width = 40;
+const height = 20;
+const imageIndex = 410;
+
+const grid = document.getElementById("grid");
+
+for(let i=0;i<width*height;i++){
+
+    let element;
+
+    if(i === imageIndex){
+        element = document.createElement("button");
+        element.classList.add("imageButton");
+
+        element.onclick = () => {
+            alert("Button clicked!");
+        };
+
+    } else {
+        element = document.createElement("div");
+        element.classList.add("square");
+    }
+
+    grid.appendChild(element);
+}
+
+</script>
+
+</body>
+</html>

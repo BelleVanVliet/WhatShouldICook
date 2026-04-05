@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>World Grid</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+}
+
+/* Grid container */
+#grid{
+    display:grid;
+    grid-template-columns: repeat(40, 1fr);
+
+    /* keeps squares square (40x20 = 2:1) */
+    width: min(100vw, 200vh);
+    aspect-ratio: 2 / 1;
+
+    /* your world map */
+    background-image:url("earth.webp");
+    background-size:cover;
+    background-position:center;
+}
+
+/* squares */
+.square{
+    aspect-ratio:1;
+
+    background-image:url("tile1.png");
+    background-size:cover;
+    background-position:center;
+}
+
+/* swap to second PNG on hover */
+.square:hover{
+    background-image:url("tile2.png");
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="grid"></div>
+
+<script>
+
+const width = 40;
+const height = 20;
+
+const grid = document.getElementById("grid");
+
+for(let i=0;i<width*height;i++){
+    const square = document.createElement("div");
+    square.classList.add("square");
+    grid.appendChild(square);
+}
+
+</script>
+
+</body>
+</html>
